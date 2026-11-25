@@ -1,11 +1,10 @@
 // =============================================
 // Expense & Budget Visualizer — App Logic
-// Logic will be added in the next step.
 // =============================================
 
-
 // ===== STATE =====
-let transactions = [];
+const STORAGE_KEY = "expense-transactions";
+let transactions = loadTransactions();
 let chart = null;
 
 // ===== ELEMEN DOM =====
@@ -20,6 +19,22 @@ const list = document.getElementById("transaction-list");
 // ===== UTILITAS =====
 function formatMoney(value) {
   return "$" + value.toFixed(2);
+}
+
+// ===== LOCAL STORAGE =====
+function saveTransactions() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+}
+
+function loadTransactions() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === null) return [];
+    const parsed = JSON.parse(saved);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    return []; // data rusak: mulai dari kosong
+  }
 }
 
 // ===== TAMBAH TRANSAKSI =====
@@ -44,6 +59,7 @@ function addTransaction(event) {
     category: category,
   });
 
+  saveTransactions();
   form.reset();
   render();
 }
@@ -53,6 +69,8 @@ function deleteTransaction(id) {
   transactions = transactions.filter(function (t) {
     return t.id !== id;
   });
+
+  saveTransactions();
   render();
 }
 
