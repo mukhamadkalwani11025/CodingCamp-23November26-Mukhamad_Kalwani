@@ -2,3 +2,25 @@
    Expense & Budget Visualizer — Stylesheet
    Styles will be added in the next step.
    ============================================= */
+#transaction-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0;
+  list-style: none;
+}
+
+#transaction-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+#spending-chart {
+  max-width: 320px;
+}
+
+#form-error {
+  color: #c0392b;
+}
