@@ -5,7 +5,7 @@
 A mobile-friendly web app to track daily spending. Built with HTML, CSS,
 and vanilla JavaScript. Data is stored in the browser with Local Storage.
 
-**Live demo:** (isi link GitHub Pages setelah aktif)
+**Live demo:** (https://mukhamadkalwani11025.github.io/CodingCamp-23November26-Mukhamad_Kalwani/)
 
 ## Features
 - Add transactions (item name, amount, category: Food, Transport, Fun) with validation
